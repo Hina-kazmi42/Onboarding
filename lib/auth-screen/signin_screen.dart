@@ -1,12 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:onboardding_screen/auth-screen/login_screen.dart';
 
 class SigninScreen extends StatefulWidget {
-  const SigninScreen({super.key});
+   SigninScreen({super.key });
 
   @override
   State<SigninScreen> createState() => _SigninScreenState();
@@ -15,6 +16,7 @@ class SigninScreen extends StatefulWidget {
 class _SigninScreenState extends State<SigninScreen> {
   TextEditingController emailController=TextEditingController();
   TextEditingController passwordController=TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,11 +57,33 @@ class _SigninScreenState extends State<SigninScreen> {
 
           InkWell(
             onTap: ()async{
-              await FirebaseAuth.instance.createUserWithEmailAndPassword
-                (email: emailController.text.trim(), password: passwordController.text.trim());
+              await FirebaseAuth.instance.
+              createUserWithEmailAndPassword
+                (email: emailController.text.trim(), password: passwordController.text.trim()).then((value){
+                  Get.defaultDialog(
 
 
-           //   Get.to(()=>LoginScreen());
+                    content: Icon(Icons.thumb_up,color: Colors.green,size: 15,),
+                    title: 'Congratulations',
+                    titleStyle: TextStyle(
+                      color: Colors.green,
+                    )
+
+                  );
+                  Get.to(()=>LoginScreen());
+
+              }).onError((error,value){
+                Get.snackbar('Error:', '$error',
+                  snackPosition: SnackPosition.BOTTOM,
+                  backgroundColor: Colors.blue.withOpacity(.5),
+
+                );
+
+
+              });
+              
+
+
 
             },
             child: Container(
