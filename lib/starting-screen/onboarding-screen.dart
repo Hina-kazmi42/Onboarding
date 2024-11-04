@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:onboardding_screen/auth-screen/login_screen.dart';
+import 'package:onboardding_screen/auth-screen/signin_screen.dart';
 
 
 class OnboardingScreen extends StatefulWidget {
@@ -139,7 +140,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ),
           ):
           GestureDetector(onTap: (){
-            Get.to(()=>LoginScreen());
+            Get.to(()=>SigninScreen());
 
 
           },

@@ -1,11 +1,18 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:onboardding_screen/auth-screen/signin_screen.dart';
 import 'package:onboardding_screen/container.dart';
 import 'package:onboardding_screen/datetime.dart';
+import 'package:onboardding_screen/firebase_options.dart';
 import 'package:onboardding_screen/starting-screen/onboarding-screen.dart';
 import 'package:onboardding_screen/starting-screen/splash-screen.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+
   runApp(const MyApp());
 }
 
@@ -37,7 +44,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: SplashScreen(),
+      home: SigninScreen(),
     );
   }
 }
