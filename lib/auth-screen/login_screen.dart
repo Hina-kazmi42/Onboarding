@@ -20,25 +20,29 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(children: [
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
           SizedBox(height: 20,),
 
-          Text('Login',style: TextStyle(fontWeight: FontWeight.bold),),
+          Text('Login your account',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25),),
 
-          Padding(padding: EdgeInsets.only(left: 30,right: 30,top: 20,bottom: 20),
+          Padding(padding: EdgeInsets.only(left: 30,right: 30,top: 40,bottom: 20),
             child: Container(
               height: 50,
-              width: 250,
+              width: 300,
               decoration: BoxDecoration(
                 color: Colors.blue,
                 borderRadius: BorderRadius.circular(10),
+
               ),
               child: TextFormField(
                 controller: emailController,
                 decoration: InputDecoration(
                     hintText: 'Enter your email',
                     hintStyle: TextStyle(color: Colors.white),
-                    prefixIcon: Icon(Icons.mail_outline_sharp,color: Colors.white,)
+                    prefixIcon: Icon(Icons.mail_outline_sharp,color: Colors.white,),
+                  border: InputBorder.none,
                 ),
 
               ),
@@ -46,7 +50,7 @@ class _LoginScreenState extends State<LoginScreen> {
           Padding(padding: EdgeInsets.only(left: 30,right: 30,top: 20,bottom: 20),
             child: Container(
               height: 50,
-              width: 250,
+              width: 300,
               decoration: BoxDecoration(
                 color: Colors.blue,
                 borderRadius: BorderRadius.circular(10),
@@ -58,28 +62,30 @@ class _LoginScreenState extends State<LoginScreen> {
                 decoration: InputDecoration(
                     hintText: 'Enter your password',
                     hintStyle: TextStyle(color: Colors.white),
-                    prefixIcon: Icon(Icons.lock_open,color: Colors.red,)
+                    prefixIcon: Icon(Icons.password_outlined,color: Colors.red,),
+                  border: InputBorder.none,
                 ),
-
               ),
             ),),
           InkWell(
             onTap: () async{
              await FirebaseAuth.instance.createUserWithEmailAndPassword
-                (email: emailController.text.trim(), password: passwordController.text.trim());
+                (email: emailController.text.trim(), password: passwordController.text.trim()).then((value){
+               Get.to(()=>HomeScreen());
+
+             });
 
 
-                Get.to(()=>HomeScreen());
 
 
             },
             child: Container(
 
               height: 40,
-              width: 250,
+              width: 200,
               decoration: BoxDecoration(
                   color: Colors.blue,
-                  borderRadius: BorderRadius.circular(50)
+                  borderRadius: BorderRadius.circular(100)
               ),
               child: Center(child: Text('Login',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
               ),),

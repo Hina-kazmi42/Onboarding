@@ -16,6 +16,7 @@ class SigninScreen extends StatefulWidget {
 class _SigninScreenState extends State<SigninScreen> {
   TextEditingController emailController=TextEditingController();
   TextEditingController passwordController=TextEditingController();
+  bool isLoading=false;
 
   @override
   Widget build(BuildContext context) {
@@ -32,64 +33,83 @@ class _SigninScreenState extends State<SigninScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
           SizedBox(height: 40,),
-            TextFormField(
-              controller: emailController,
-              decoration: InputDecoration(
-                hintText: 'Enter Your Email',
-                hintStyle: TextStyle(color: Colors.blue),
-                prefixIcon: Icon(Icons.mail_lock,color: Colors.blue,),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: TextFormField(
+                controller: emailController,
+                decoration: InputDecoration(
+                  hintText: 'Enter Your Email',
+                  hintStyle: TextStyle(color: Colors.blue),
+                  prefixIcon: Icon(Icons.mail_lock,color: Colors.blue,),
 
+                ),
               ),
             ),
             SizedBox(height: 20,),
 
-            TextFormField(
-              controller: passwordController,
-              obscureText: true,
-              decoration: InputDecoration(
-                hintText: 'Enter Your Password',
-                hintStyle: TextStyle(color: Colors.blue),
-                prefixIcon: Icon(Icons.password_outlined,color: Colors.blue,),
+            Padding(
+              padding:  EdgeInsets.symmetric(horizontal: 20),
+              child: TextFormField(
 
+                controller: passwordController,
+                obscureText: true,
+                decoration: InputDecoration(
+
+                  hintText: 'Enter Your Password',
+                  hintStyle: TextStyle(color: Colors.blue),
+                  prefixIcon: Icon(Icons.password_outlined,color: Colors.blue,),
+
+                ),
               ),
             ),
             SizedBox(height: 20,),
 
-          InkWell(
+          isLoading?CircularProgressIndicator() :InkWell(
             onTap: ()async{
+              isLoading=true;
+              setState(() {
+
+              });
+
               await FirebaseAuth.instance.
               createUserWithEmailAndPassword
-                (email: emailController.text.trim(), password: passwordController.text.trim()).then((value){
+                (email: emailController.text.trim(), password: passwordController.text.trim())
+                  .then((value)
+              {
+                  isLoading=false;
+                  setState(() {
+
+                  });
                   Get.defaultDialog(
 
-
-                    content: Icon(Icons.thumb_up,color: Colors.green,size: 15,),
+                    content: Icon(Icons.thumb_up,color: Colors.green,size: 20,),
                     title: 'Congratulations',
                     titleStyle: TextStyle(
                       color: Colors.green,
                     )
-
                   );
                   Get.to(()=>LoginScreen());
 
+
+
               }).onError((error,value){
+                isLoading=false;
+                setState(() {
+
+                });
+
                 Get.snackbar('Error:', '$error',
                   snackPosition: SnackPosition.BOTTOM,
                   backgroundColor: Colors.blue.withOpacity(.5),
+                  icon: Icon(Icons.error_outline_outlined,color: Colors.red,),
 
                 );
-
-
               });
-              
-
-
-
             },
             child: Container(
 
               height: 40,
-              width: 250,
+              width: 200,
               decoration: BoxDecoration(
                   color: Colors.blue,
                   borderRadius: BorderRadius.circular(100)
