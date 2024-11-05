@@ -27,12 +27,12 @@ class _LoginScreenState extends State<LoginScreen> {
 
       });
 
-      Get.defaultDialog(
+      Get.snackbar('Successfully', 'Your account login',
+          backgroundColor:Colors.blue.withOpacity(.5) ,
+          snackPosition: SnackPosition.TOP,
+          duration: Duration(seconds: 1),
+          icon: Icon(Icons.thumb_up,color: Colors.green,)
 
-          content: Icon(Icons.thumb_up, color: Colors.green, size: 20,),
-      title: 'Congratulations',
-      titleStyle: TextStyle(
-      color: Colors.green,),
 
       );
 
@@ -43,13 +43,11 @@ class _LoginScreenState extends State<LoginScreen> {
       setState(() {
 
       });
-      Get.snackbar('error', '$error',
+      Get.snackbar('Error', '$error',
         backgroundColor:Colors.blue.withOpacity(.5) ,
           snackPosition: SnackPosition.BOTTOM,
-          duration: Duration(seconds: 2),
-          dismissDirection: DismissDirection.horizontal,
+          duration: Duration(seconds: 1),
           icon: Icon(Icons.error,color: Colors.red,)
-
 
       );
 
@@ -109,7 +107,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
             ),),
-         isLoader?CircularProgressIndicator(): InkWell(
+         isLoading?CircularProgressIndicator(): InkWell(
             onTap: () {
               Login();
 

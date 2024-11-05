@@ -33,20 +33,17 @@ class _SigninScreenState extends State<SigninScreen> {
       setState(() {
 
       });
-      Get.defaultDialog(
-
-        content: Icon(Icons.thumb_up, color: Colors.green, size: 20,),
-        title: 'Congratulations',
-        titleStyle: TextStyle(
-          color: Colors.green,),
-
+      Get.snackbar('Congratulations', 'Your account successfully created',
+          backgroundColor:Colors.blue.withOpacity(.5) ,
+          snackPosition: SnackPosition.TOP,
+          duration: Duration(seconds: 1),
+          icon: Icon(Icons.thumb_up,color: Colors.green,)
 
       );
       Get.to(() => LoginScreen());
     }).onError((error, value) {
       isLoading = false;
       setState(() {
-
       });
 
       Get.snackbar('Error:', '$error',
