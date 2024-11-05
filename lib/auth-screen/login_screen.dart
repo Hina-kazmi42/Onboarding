@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:onboardding_screen/auth-screen/signin_screen.dart';
 import 'package:onboardding_screen/home-screen/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -15,6 +16,47 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController   emailController=TextEditingController();
   TextEditingController   passwordController=TextEditingController();
+  bool isLoading=false;
+  Future<void> Login()async {
+    isLoading = true;
+    await FirebaseAuth.instance.signInWithEmailAndPassword
+      (email: emailController.text.trim(),
+        password: passwordController.text.trim()).then((onValue) {
+      isLoading = false;
+      setState(() {
+
+      });
+
+      Get.defaultDialog(
+
+          content: Icon(Icons.thumb_up, color: Colors.green, size: 20,),
+      title: 'Congratulations',
+      titleStyle: TextStyle(
+      color: Colors.green,),
+
+      );
+
+      Get.to(() => HomeScreen());
+
+    }).onError( (error,handleError){
+      isLoading=false;
+      setState(() {
+
+      });
+      Get.snackbar('error', '$error',
+        backgroundColor:Colors.blue.withOpacity(.5) ,
+          snackPosition: SnackPosition.BOTTOM,
+          duration: Duration(seconds: 2),
+          dismissDirection: DismissDirection.horizontal,
+          icon: Icon(Icons.error,color: Colors.red,)
+
+
+      );
+
+    });
+
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,14 +109,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
             ),),
-          InkWell(
-            onTap: () async{
-             await FirebaseAuth.instance.createUserWithEmailAndPassword
-                (email: emailController.text.trim(), password: passwordController.text.trim()).then((value){
-               Get.to(()=>HomeScreen());
-
-             });
-
+         isLoader?CircularProgressIndicator(): InkWell(
+            onTap: () {
+              Login();
 
 
 
@@ -90,7 +127,24 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Center(child: Text('Login',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
               ),),
           ),
-        ],),
+            SizedBox(height: 5,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('Don\'t have an account ?',style: TextStyle(fontSize: 15),),
+                SizedBox(width: 3,),
+
+                GestureDetector(
+                  onTap: (){
+                    Get.to(()=>SigninScreen());
+                  },
+                  child: Text('Signup',style: TextStyle(color:
+                  Colors.blue),),
+                )
+              ],
+            ),
+
+          ],),
       )
 
     );

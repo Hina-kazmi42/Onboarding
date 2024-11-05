@@ -29,16 +29,18 @@ class _SigninScreenState extends State<SigninScreen> {
         password: passwordController.text.trim())
         .then((value) {
       isLoading = false;
+
       setState(() {
 
       });
       Get.defaultDialog(
 
-          content: Icon(Icons.thumb_up, color: Colors.green, size: 20,),
-          title: 'Congratulations',
-          titleStyle: TextStyle(
-            color: Colors.green,
-          )
+        content: Icon(Icons.thumb_up, color: Colors.green, size: 20,),
+        title: 'Congratulations',
+        titleStyle: TextStyle(
+          color: Colors.green,),
+
+
       );
       Get.to(() => LoginScreen());
     }).onError((error, value) {
@@ -50,6 +52,8 @@ class _SigninScreenState extends State<SigninScreen> {
       Get.snackbar('Error:', '$error',
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: Colors.blue.withOpacity(.5),
+        duration: Duration(seconds: 2),
+        dismissDirection: DismissDirection.horizontal,
         icon: Icon(Icons.error_outline_outlined, color: Colors.red,),
 
       );
@@ -139,7 +143,24 @@ class _SigninScreenState extends State<SigninScreen> {
                child: Center(child: Text('Register',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
                ),
                       ),
+            ),
+            SizedBox(height: 5,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text('Already have an account ?',style: TextStyle(fontSize: 15),),
+                SizedBox(width: 3,),
+
+            GestureDetector(
+              onTap: (){
+                Get.to(()=>LoginScreen());
+              },
+              child: Text('Login',style: TextStyle(color:
+              Colors.blue),),
             )
+              ],
+            ),
+
 
         ],
     ),
