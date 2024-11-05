@@ -1,8 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:onboardding_screen/home-screen/home_screen.dart';
 import 'package:onboardding_screen/starting-screen/onboarding-screen.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -18,11 +20,26 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState(){
     super.initState();
     Future.delayed(Duration(seconds: 3),(){
-      Get.to(()=>OnboardingScreen());
-    }
+      isLogedin();
 
-    );
+    });
   }
+  //------ islogedin function
+  isLogedin(){
+
+    User user= FirebaseAuth.instance.currentUser!;
+    if(user==null)
+      {
+        Get.to(()=>OnboardingScreen());
+
+      }
+    else
+      {
+        Get.to(()=>HomeScreen());
+      }
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,9 +84,9 @@ class _SplashScreenState extends State<SplashScreen> {
               padding: EdgeInsets.only(top: 600),
               child: Column(
                 children: [
-                  Text('Developed By',style:GoogleFonts.abrilFatface(color: Colors.white,fontSize: 7,),),
+                  Text('Developed By',style:GoogleFonts.gabarito(color: Colors.white.withOpacity(.3),fontSize: 15,),),
                   SizedBox(height: 2,),
-                  Text('Syeda Hina Zahra',style: GoogleFonts.abyssinicaSil(color: Colors.white,fontSize: 10,),),
+                  Text('Syeda Hina Zahra',style: GoogleFonts.abyssinicaSil(color: Colors.white,fontSize: 15,),),
                 ],
               ),
             ),
