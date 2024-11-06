@@ -39,14 +39,12 @@ class _InsertDataState extends State<InsertData> {
      setState(() {
 
      });
-     
+
    }finally
    {
      Get.back();
 
-
    }
-
   }
   @override
   Widget build(BuildContext context) {
