@@ -24,7 +24,7 @@ class _InsertDataState extends State<InsertData> {
      setState(() {
 
      });
-     String id=DateTime.now().millisecondsSinceEpoch.toString();
+     String id=DateTime.now().millisecond.toString();
      await FirebaseFirestore.instance.collection('Todo')
          .doc(id)
          .set({

@@ -42,16 +42,20 @@ class _HomeScreenState extends State<HomeScreen> {
               itemCount: data.size,
                 itemBuilder: (context,Index){
                 return Card(
+
                   color: Colors.blue,
                   child: ListTile(
+                    leading: CircleAvatar(
+                      child: Text(data.docs[Index]['id'],)
+                    ),
                     title: Text(data.docs[Index]['title']),
                     subtitle: Text(data.docs[Index]['description']),
                   ),
 
-                )
+                );
 
 
-                })
+                });
           }
 
       )
