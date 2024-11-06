@@ -28,6 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
       });
 
       Get.snackbar('Successfully', 'Your account login',
+
           backgroundColor:Colors.blue.withOpacity(.5) ,
           snackPosition: SnackPosition.TOP,
           duration: Duration(seconds: 1),
@@ -72,7 +73,8 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 50,
               width: 300,
               decoration: BoxDecoration(
-                color: Colors.blue,
+                border: Border.all(),
+
                 borderRadius: BorderRadius.circular(10),
 
               ),
@@ -80,8 +82,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 controller: emailController,
                 decoration: InputDecoration(
                     hintText: 'Enter your email',
-                    hintStyle: TextStyle(color: Colors.white),
-                    prefixIcon: Icon(Icons.mail_outline_sharp,color: Colors.white,),
+                    hintStyle: TextStyle(color: Colors.blue),
+                    prefixIcon: Icon(Icons.mail_outline_sharp,color: Colors.blue,),
                   border: InputBorder.none,
                 ),
 
@@ -92,7 +94,8 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 50,
               width: 300,
               decoration: BoxDecoration(
-                color: Colors.blue,
+                border: Border.all(),
+
                 borderRadius: BorderRadius.circular(10),
               ),
               child: TextFormField(
@@ -101,7 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 controller: passwordController,
                 decoration: InputDecoration(
                     hintText: 'Enter your password',
-                    hintStyle: TextStyle(color: Colors.white),
+                    hintStyle: TextStyle(color: Colors.blue),
                     prefixIcon: Icon(Icons.password_outlined,color: Colors.red,),
                   border: InputBorder.none,
                 ),

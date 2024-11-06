@@ -27,7 +27,7 @@ class _SplashScreenState extends State<SplashScreen> {
   //------ islogedin function
   isLogedin(){
 
-    User user= FirebaseAuth.instance.currentUser!;
+    User? user= FirebaseAuth.instance.currentUser;
     if(user==null)
       {
         Get.to(()=>OnboardingScreen());
