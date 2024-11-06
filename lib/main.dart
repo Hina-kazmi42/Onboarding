@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:onboardding_screen/auth-screen/login_screen.dart';
 import 'package:onboardding_screen/home-screen/home_screen.dart';
+import 'package:onboardding_screen/home-screen/insertdata-screen/insert-data.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -46,7 +47,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+      home: InsertData()
     );
   }
 }
