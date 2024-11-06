@@ -6,6 +6,7 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:onboardding_screen/auth-screen/login_screen.dart';
 import 'package:onboardding_screen/home-screen/insertdata-screen/insert-data.dart';
+import 'package:onboardding_screen/home-screen/update-screen/update-data.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -41,12 +42,47 @@ class _HomeScreenState extends State<HomeScreen> {
             return ListView.builder(
               itemCount: data.size,
                 itemBuilder: (context,Index){
+                  String docid=data.docs[Index]['id'];
                 return Card(
 
                   color: Colors.blue,
                   child: ListTile(
+
+                    onLongPress: (){
+                      Get.to(()=>UpdateData(
+                          docid: docid));
+
+
+                    },
+                    onTap: (){
+                      Get.defaultDialog(
+                        title: 'Confirmation',
+                            content: Text('You want to delete it ?'),
+                          actions:
+                          [
+                            TextButton(
+
+                                onPressed: ()async{
+                                  await FirebaseFirestore.instance.
+                                  collection('Todo')
+                                      .doc(docid)
+                                      .delete();
+                                  Get.back();
+                                },
+                                child: Text('Yes') ),
+                            SizedBox(width: 5,),
+                            TextButton(
+                                onPressed: (){
+                                  Get.back();
+
+                                },
+                                child: Text('No'))
+                          ]
+
+                      );
+                    },
                     leading: CircleAvatar(
-                      child: Text(data.docs[Index]['id'],)
+                      child: Text(docid,)
                     ),
                     title: Text(data.docs[Index]['title']),
                     subtitle: Text(data.docs[Index]['description']),

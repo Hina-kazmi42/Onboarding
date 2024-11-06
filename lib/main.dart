@@ -9,7 +9,7 @@ import 'package:onboardding_screen/auth-screen/signin_screen.dart';
 import 'package:onboardding_screen/container.dart';
 import 'package:onboardding_screen/datetime.dart';
 import 'package:onboardding_screen/firebase_options.dart';
-import 'package:onboardding_screen/starting-screen/onboarding-screen.dart';
+
 import 'package:onboardding_screen/starting-screen/splash-screen.dart';
 
 void main() async{
@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      home: HomeScreen()
+      home: SplashScreen()
     );
   }
 }

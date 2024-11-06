@@ -4,8 +4,9 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:onboardding_screen/auth-screen/signin_screen.dart';
 import 'package:onboardding_screen/home-screen/home_screen.dart';
-import 'package:onboardding_screen/starting-screen/onboarding-screen.dart';
+
 
 class SplashScreen extends StatefulWidget {
    SplashScreen({super.key});
@@ -30,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen> {
     User? user= FirebaseAuth.instance.currentUser;
     if(user==null)
       {
-        Get.to(()=>OnboardingScreen());
+        Get.to(()=>SigninScreen());
 
       }
     else
