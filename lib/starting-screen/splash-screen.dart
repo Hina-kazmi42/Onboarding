@@ -1,101 +1,21 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'package:onboardding_screen/auth-screen/signin_screen.dart';
-import 'package:onboardding_screen/home-screen/home_screen.dart';
-
-
-class SplashScreen extends StatefulWidget {
-   SplashScreen({super.key});
-
-
-
-  @override
-  State<SplashScreen> createState() => _SplashScreenState();
-}
-
-class _SplashScreenState extends State<SplashScreen> {
-  void initState(){
-    super.initState();
-    Future.delayed(Duration(seconds: 3),(){
-      isLogedin();
-
-    });
-  }
-  //------ islogedin function
-  isLogedin(){
-
-    User? user= FirebaseAuth.instance.currentUser;
-    if(user==null)
-      {
-        Get.to(()=>SigninScreen());
-
-      }
-    else
-      {
-        Get.to(()=>HomeScreen());
-      }
-  }
-
+class SplashScreen extends StatelessWidget {
+  const SplashScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.blue,
-      body: Stack(
+    return AnimatedSplashScreen(
+        splash: Center(
+          child: LottieBuilder.asset('lib/assets/animation/Animation2.json')
+        )
+        , nextScreen:  SigninScreen(),
+      splashIconSize: 3000,
+      duration: 5000,
 
-        children: [
-
-          SingleChildScrollView(
-            scrollDirection: Axis.vertical,
-            child: Center(
-              child: Column(
-
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image(image: AssetImage('lib/assets/splash.png',),),
-                ],
-              ),
-            ),
-          ),
-            Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-
-                      children: [
-                      Text('Instant',style:GoogleFonts.eagleLake(color: Colors.white,fontSize: 20,fontWeight: FontWeight.w800),),
-                      SizedBox(width: 5,),
-                      Text('Translator',style: GoogleFonts.fahkwang(color: Colors.white,fontSize: 20,),),
-                      ],
-                      ),
-                  SizedBox(height: 10,),
-                  SpinKitFadingCircle(color: Colors.white,),
-
-                ],
-              ),
-            ),
-          Center(
-            child: Padding(
-              padding: EdgeInsets.only(top: 600),
-              child: Column(
-                children: [
-                  Text('Developed By',style:GoogleFonts.gabarito(color: Colors.white.withOpacity(.3),fontSize: 15,),),
-                  SizedBox(height: 2,),
-                  Text('Syeda Hina Zahra',style: GoogleFonts.abyssinicaSil(color: Colors.white,fontSize: 15,),),
-                ],
-              ),
-            ),
-          )
-        ],
-
-
-      ),
+      backgroundColor: Colors.grey,
 
     );
   }
