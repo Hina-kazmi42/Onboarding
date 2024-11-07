@@ -11,36 +11,42 @@ class SplashScreen extends StatelessWidget {
 
     return Scaffold(
 
-      body: AnimatedSplashScreen(
 
-        splash: Center(
+      body: Stack(
+        children: [ Column(
+          children: [
+            Expanded(
+              child:   Container(
 
-            child:LottieBuilder.asset('lib/assets/animation/Animation2.json')
+              decoration: BoxDecoration(
+                gradient: LinearGradient(colors: [
+                  Colors.green.shade400,
+                  Colors.deepOrangeAccent.shade200
+                ],
+                  begin: Alignment.topRight,
+                  end: Alignment.bottomLeft,
+                ),
+              ),
+                child:   Expanded(child: Container(child:
+                AnimatedSplashScreen(
 
-        )
-        , nextScreen:  SigninScreen(),
-        splashIconSize: 3000,
-        duration: 5000,
-        backgroundColor: AnimateGradient(primaryColors: [
-          Colors.green,
-          Colors.deepOrangeAccent,
-          Colors.white,
-        ],
-            secondaryColors: [
-              Colors.white,
-              Colors.orangeAccent,
-              Colors.orange
+                  splash: Center(
 
-            ]
+                      child:LottieBuilder.asset('lib/assets/animation/Animation2.json')
+
+                  )
+                  , nextScreen:  SigninScreen(),
+                )
+                )),
+                
+            ),),
+
+          ],
         ),
-          ,
 
+        ],
+      ),
 
-
-
-
-
-      )
     );
   }
 }

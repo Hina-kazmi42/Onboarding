@@ -64,7 +64,7 @@ class _SigninScreenState extends State<SigninScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.green.shade400,
         title: Text('Registration',style: GoogleFonts.dangrek(color: Colors.white,fontSize: 20),),
         centerTitle: true,
       ),
@@ -82,14 +82,14 @@ class _SigninScreenState extends State<SigninScreen> {
                 width: 300,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  border: Border.all()
+                  border: Border.all(color: Colors.deepOrangeAccent.shade400)
                 ),
                 child: TextFormField(
                   controller: emailController,
                   decoration: InputDecoration(
                     hintText: 'Enter Your Email',
-                    hintStyle: TextStyle(color: Colors.blue),
-                    prefixIcon: Icon(Icons.mail_lock,color: Colors.blue,),
+                    hintStyle: TextStyle(color: Colors.green.shade400),
+                    prefixIcon: Icon(Icons.mail_lock,color: Colors.green.shade400,),
                     border: InputBorder.none
 
                   ),
@@ -104,7 +104,7 @@ class _SigninScreenState extends State<SigninScreen> {
                 height: 40,
                 width: 300,
                 decoration:BoxDecoration(
-                  border: Border.all(),
+                  border: Border.all(color: Colors.deepOrangeAccent.shade400),
                   borderRadius: BorderRadius.circular(10)
                 ),
                 child: TextFormField(
@@ -114,8 +114,8 @@ class _SigninScreenState extends State<SigninScreen> {
                   decoration: InputDecoration(
 
                     hintText: 'Enter Your Password',
-                    hintStyle: TextStyle(color: Colors.blue),
-                    prefixIcon: Icon(Icons.password_outlined,color: Colors.blue,),
+                    hintStyle: TextStyle(color: Colors.green.shade400),
+                    prefixIcon: Icon(Icons.password_outlined,color: Colors.green.shade400,),
                       border: InputBorder.none
 
                   ),
@@ -134,7 +134,7 @@ class _SigninScreenState extends State<SigninScreen> {
                height: 40,
                width: 200,
                decoration: BoxDecoration(
-                   color: Colors.blue,
+                   color: Colors.deepOrangeAccent.shade200,
                    borderRadius: BorderRadius.circular(100)
                ),
                child: Center(child: Text('Register',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
@@ -153,7 +153,7 @@ class _SigninScreenState extends State<SigninScreen> {
                 Get.to(()=>LoginScreen());
               },
               child: Text('Login',style: TextStyle(color:
-              Colors.blue),),
+              Colors.green.shade400),),
             )
               ],
             ),

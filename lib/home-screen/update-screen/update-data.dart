@@ -49,21 +49,21 @@ class _UpdateDataState extends State<UpdateData> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.blue,
-          title: Text('Update Data',style: GoogleFonts.ibarraRealNova(color: Colors.white,fontSize: 20),),
+          backgroundColor: Colors.green.shade400,
+          title: Text('Update Data',style: GoogleFonts.ibarraRealNova(color: Colors.deepOrangeAccent.shade400,fontSize: 20),),
           centerTitle: true,
         ),
         body: Center(child: Column(
           children: [
             SizedBox(height: 50,),
-            Text('Update Data',style: GoogleFonts.sahitya(color: Colors.blue,fontSize: 20),),
+            Text('Update Data',style: GoogleFonts.sahitya(color: Colors.green.shade400,fontSize: 20),),
             SizedBox(height: 30,),
             Container(
               height: 50,
               width: 350,
               decoration: BoxDecoration(
-                border: Border.all(color: Colors.blue),
-                color: Colors.blue,
+                border: Border.all(color: Colors.deepOrangeAccent.shade400),
+
                 borderRadius:BorderRadius.circular(10),
               ),
               child: Padding(
@@ -73,7 +73,7 @@ class _UpdateDataState extends State<UpdateData> {
                   controller: titleController,
                   decoration: InputDecoration(
                     hintText: 'Enter Title ',
-                    hintStyle: TextStyle(color: Colors.white),
+                    hintStyle: TextStyle(color: Colors.green.shade400),
                     border: InputBorder.none,
                   ),
                 ),
@@ -84,8 +84,8 @@ class _UpdateDataState extends State<UpdateData> {
               height: 50,
               width: 350,
               decoration: BoxDecoration(
-                border: Border.all(color: Colors.blue),
-                color: Colors.blue,
+                border: Border.all(color: Colors.deepOrangeAccent.shade400),
+
                 borderRadius:BorderRadius.circular(10),
               ),
               child: Padding(
@@ -95,7 +95,7 @@ class _UpdateDataState extends State<UpdateData> {
                   controller: descriptionController,
                   decoration: InputDecoration(
                     hintText: 'Enter Description ',
-                    hintStyle: TextStyle(color: Colors.white,),
+                    hintStyle: TextStyle(color: Colors.green.shade400,),
                     border: InputBorder.none,
                   ),
                 ),
@@ -134,7 +134,7 @@ class _UpdateDataState extends State<UpdateData> {
                 height: 40,
                 width: 200,
                 decoration: BoxDecoration(
-                    color: Colors.blue,
+                    color: Colors.deepOrangeAccent.shade200,
                     borderRadius: BorderRadius.circular(100)
                 ),
                 child: Center(child: Text('Update',style: TextStyle(color: Colors.white,fontSize: 20),),

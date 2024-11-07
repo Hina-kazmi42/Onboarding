@@ -66,14 +66,14 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
           SizedBox(height: 20,),
 
-          Text('Login your account',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25),),
+          Text('Login your account',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25,color: Colors.green.shade400),),
 
           Padding(padding: EdgeInsets.only(left: 30,right: 30,top: 40,bottom: 20),
             child: Container(
               height: 50,
               width: 300,
               decoration: BoxDecoration(
-                border: Border.all(),
+                border: Border.all(color: Colors.deepOrangeAccent.shade400),
 
                 borderRadius: BorderRadius.circular(10),
 
@@ -82,8 +82,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 controller: emailController,
                 decoration: InputDecoration(
                     hintText: 'Enter your email',
-                    hintStyle: TextStyle(color: Colors.blue),
-                    prefixIcon: Icon(Icons.mail_outline_sharp,color: Colors.blue,),
+                    hintStyle: TextStyle(color: Colors.green.shade400),
+                    prefixIcon: Icon(Icons.mail_outline_sharp,color: Colors.green.shade400,),
                   border: InputBorder.none,
                 ),
 
@@ -94,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 50,
               width: 300,
               decoration: BoxDecoration(
-                border: Border.all(),
+                border: Border.all(color: Colors.deepOrangeAccent.shade400),
 
                 borderRadius: BorderRadius.circular(10),
               ),
@@ -104,8 +104,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 controller: passwordController,
                 decoration: InputDecoration(
                     hintText: 'Enter your password',
-                    hintStyle: TextStyle(color: Colors.blue),
-                    prefixIcon: Icon(Icons.password_outlined,color: Colors.red,),
+                    hintStyle: TextStyle(color: Colors.green.shade400),
+                    prefixIcon: Icon(Icons.password_outlined,color: Colors.green.shade400,),
                   border: InputBorder.none,
                 ),
               ),
@@ -122,7 +122,7 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 40,
               width: 200,
               decoration: BoxDecoration(
-                  color: Colors.blue,
+                  color: Colors.deepOrangeAccent.shade200,
                   borderRadius: BorderRadius.circular(100)
               ),
               child: Center(child: Text('Login',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
@@ -140,7 +140,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     Get.to(()=>SigninScreen());
                   },
                   child: Text('Signup',style: TextStyle(color:
-                  Colors.blue),),
+                  Colors.green.shade400),),
                 )
               ],
             ),

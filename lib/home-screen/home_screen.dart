@@ -20,11 +20,11 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(onPressed: (){
         Get.to(()=>InsertData());
-      },backgroundColor: Colors.blue,
+      },backgroundColor: Colors.deepOrangeAccent.shade200,
         child: Icon(Icons.add,color: Colors.white,),),
       appBar: AppBar(
-        backgroundColor: Colors.blue,
-        title: Text('Home Screen',style: GoogleFonts.habibi(color: Colors.white,fontSize: 20),),
+        backgroundColor: Colors.green.shade400,
+        title: Text('Home Screen',style: GoogleFonts.habibi(color: Colors.deepOrangeAccent.shade200,fontSize: 30),),
         centerTitle: true,
         actions: [
           IconButton(onPressed: ()async{
