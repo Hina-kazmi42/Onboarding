@@ -66,9 +66,11 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
 
                     decoration: BoxDecoration(
                         gradient: LinearGradient(colors:  [
-                          Colors.green.shade400.withOpacity(0.8),
-                          Colors.deepOrangeAccent.shade200.withOpacity(0.8),
+
+                          Color(0xff734b6d),
+                          Color(0xff42275a ),
                         ],
+
                           begin: _topAlignment.value,
                           end: _bottomAlignment.value,
                         )
@@ -109,8 +111,8 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
 
                     decoration: BoxDecoration(
                         gradient: LinearGradient(colors:  [
-                          Colors.green.shade400.withOpacity(0.8),
-                          Colors.deepOrangeAccent.shade200.withOpacity(0.8),
+                          Colors.green.withOpacity(0.8),
+                          Colors.red.shade900.withOpacity(0.8),
                         ],
                           begin: _bottomAlignment.value,
                           end: _topAlignment.value,
