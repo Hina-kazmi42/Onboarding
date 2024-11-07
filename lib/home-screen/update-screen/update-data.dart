@@ -49,30 +49,26 @@ class _UpdateDataState extends State<UpdateData> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.green.shade400,
-          title: Text('Update Data',style: GoogleFonts.ibarraRealNova(color: Colors.deepOrangeAccent.shade400,fontSize: 20),),
+          backgroundColor:  Color(0xff47001c ),
+          title: Text('Update Data',style: GoogleFonts.ibarraRealNova(color: Colors.white,fontSize: 20),),
           centerTitle: true,
         ),
-        body: Container(        decoration: BoxDecoration(
-            gradient: LinearGradient(colors:
-            [
+        body: Container(      decoration: BoxDecoration(
+            gradient: LinearGradient(colors: [
+              Color(0xff47001c).withOpacity(.8),
+              Color(0xff971132).withOpacity(.9),
+            ], begin: Alignment.topRight, end: Alignment.bottomRight)),
 
-              Colors.deepOrangeAccent.shade200.withOpacity(0.3),
-              Colors.green.shade400.withOpacity(0.5),
-            ]
-
-            )
-        ),
           child: Center(child: Column(
             children: [
               SizedBox(height: 50,),
-              Text('Update Data',style: GoogleFonts.sahitya(color: Colors.green.shade400,fontSize: 20),),
+              Text('Update Data',style: GoogleFonts.sahitya(color:  Color(0xff47001c ),fontSize: 40),),
               SizedBox(height: 30,),
               Container(
                 height: 50,
                 width: 350,
                 decoration: BoxDecoration(
-                  border: Border.all(color: Colors.deepOrangeAccent.shade400),
+                  border: Border.all(color:  Color(0xff47001c ),width: 2),
 
                   borderRadius:BorderRadius.circular(10),
                 ),
@@ -83,7 +79,7 @@ class _UpdateDataState extends State<UpdateData> {
                     controller: titleController,
                     decoration: InputDecoration(
                       hintText: 'Enter Title ',
-                      hintStyle: TextStyle(color: Colors.green.shade400),
+                      hintStyle: TextStyle(color:  Color(0xff47001c )),
                       border: InputBorder.none,
                     ),
                   ),
@@ -94,7 +90,7 @@ class _UpdateDataState extends State<UpdateData> {
                 height: 50,
                 width: 350,
                 decoration: BoxDecoration(
-                  border: Border.all(color: Colors.deepOrangeAccent.shade400),
+                  border: Border.all(color:  Color(0xff47001c ),width: 2),
 
                   borderRadius:BorderRadius.circular(10),
                 ),
@@ -105,7 +101,7 @@ class _UpdateDataState extends State<UpdateData> {
                     controller: descriptionController,
                     decoration: InputDecoration(
                       hintText: 'Enter Description ',
-                      hintStyle: TextStyle(color: Colors.green.shade400,),
+                      hintStyle: TextStyle(color:  Color(0xff47001c ),),
                       border: InputBorder.none,
                     ),
                   ),
@@ -117,8 +113,8 @@ class _UpdateDataState extends State<UpdateData> {
 
                   Get.defaultDialog(
                       title: 'Confirmation',
-                      titleStyle: TextStyle(color: Colors.green),
-                      content: Text('You want to delete it ?',style: TextStyle(color: Colors.green),),
+                      titleStyle: TextStyle(color:  Color(0xff47001c )),
+                      content: Text('You want to delete it ?',style: TextStyle(color:  Color(0xff47001c )),),
                   actions:
                   [
                   TextButton(
@@ -145,7 +141,7 @@ class _UpdateDataState extends State<UpdateData> {
                   height: 40,
                   width: 200,
                   decoration: BoxDecoration(
-                      color: Colors.deepOrangeAccent.shade200,
+                      color:  Color(0xff47001c ),
                       borderRadius: BorderRadius.circular(100)
                   ),
                   child: Center(child: Text('Update',style: TextStyle(color: Colors.white,fontSize: 20),),

@@ -14,152 +14,181 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  TextEditingController   emailController=TextEditingController();
-  TextEditingController   passwordController=TextEditingController();
-  bool isLoading=false;
-  Future<void> Login()async {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  bool isLoading = false;
+  Future<void> Login() async {
     isLoading = true;
-    await FirebaseAuth.instance.signInWithEmailAndPassword
-      (email: emailController.text.trim(),
-        password: passwordController.text.trim()).then((onValue) {
+    await FirebaseAuth.instance
+        .signInWithEmailAndPassword(
+            email: emailController.text.trim(),
+            password: passwordController.text.trim())
+        .then((onValue) {
       isLoading = false;
-      setState(() {
-
-      });
+      setState(() {});
 
       Get.snackbar('Successfully', 'Your account login',
 
-          backgroundColor:Colors.deepOrangeAccent.withOpacity(.8) ,
           snackPosition: SnackPosition.TOP,
           duration: Duration(seconds: 1),
-          icon: Icon(Icons.thumb_up,color: Colors.green.shade600,)
-
-
-      );
+          icon: Icon(
+            Icons.thumb_up,
+            color: Colors.green.shade600,
+          ));
 
       Get.to(() => HomeScreen());
-
-    }).onError( (error,handleError){
-      isLoading=false;
-      setState(() {
-
-      });
+    }).onError((error, handleError) {
+      isLoading = false;
+      setState(() {});
       Get.snackbar('Error', '$error',
-        backgroundColor:Colors.blue.withOpacity(.5) ,
+          backgroundColor: Colors.white.withOpacity(.8),
           snackPosition: SnackPosition.BOTTOM,
-          duration: Duration(seconds: 1),
-          icon: Icon(Icons.error,color: Colors.red,)
-
-      );
-
+          duration: Duration(seconds: 2),
+          icon: Icon(
+            Icons.error,
+            color: Colors.red,
+          ));
     });
-
-
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-            gradient: LinearGradient(colors:
-            [
+        body: Stack(
+          children:[
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 150,top: 40),
+              child: Text(
+                'Login your account',
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25,
+                    color: Color(0xff47001c )),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 120,top: 100),
+              child: Image(image: AssetImage('lib/assets/password.png'),height: 100,width: 150,),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 250,top: 100),
+              child: Image(image: AssetImage('lib/assets/key.png'),height: 120,width: 200,),
+            ),
 
-              Colors.deepOrangeAccent.shade200.withOpacity(0.3),
-              Colors.green.shade400.withOpacity(0.5),
-            ]
 
-            )
-        ),
-        child: Center(
+            Container(
+                decoration: BoxDecoration(
+            gradient: LinearGradient(colors: [
+          Color(0xff47001c).withOpacity(.8),
+          Color(0xff971132).withOpacity(.8),
+                ], begin: Alignment.topRight, end: Alignment.bottomRight)),
+                child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-            SizedBox(height: 20,),
 
-            Text('Login your account',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 25,color: Colors.green.shade400),),
-
-            Padding(padding: EdgeInsets.only(left: 30,right: 30,top: 40,bottom: 20),
-              child: Container(
-                height: 50,
-                width: 300,
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.deepOrangeAccent.shade400),
-
-                  borderRadius: BorderRadius.circular(10),
-
-                ),
-                child: TextFormField(
-                  controller: emailController,
-                  decoration: InputDecoration(
-                      hintText: 'Enter your email',
-                      hintStyle: TextStyle(color: Colors.green.shade400),
-                      prefixIcon: Icon(Icons.mail_outline_sharp,color: Colors.green.shade400,),
-                    border: InputBorder.none,
+              Padding(
+                padding:
+                    EdgeInsets.only(left: 30, right: 30, top: 70, ),
+                child: Container(
+                  height: 50,
+                  width: 350,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Color(0xff47001c ),width: 2),
+                    borderRadius: BorderRadius.circular(10),
                   ),
-
-                ),
-              ),),
-            Padding(padding: EdgeInsets.only(left: 30,right: 30,top: 20,bottom: 20),
-              child: Container(
-                height: 50,
-                width: 300,
-                decoration: BoxDecoration(
-                  border: Border.all(color: Colors.deepOrangeAccent.shade400),
-
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: TextFormField(
-                  obscureText: true,
-
-                  controller: passwordController,
-                  decoration: InputDecoration(
-                      hintText: 'Enter your password',
-                      hintStyle: TextStyle(color: Colors.green.shade400),
-                      prefixIcon: Icon(Icons.password_outlined,color: Colors.green.shade400,),
-                    border: InputBorder.none,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 15),
+                    child: TextFormField(
+                      controller: emailController,
+                      decoration: InputDecoration(
+                        hintText: 'Enter your email',
+                        hintStyle: TextStyle(color: Color(0xff47001c )),
+                        border: InputBorder.none,
+                      ),
+                    ),
                   ),
                 ),
-              ),),
-           isLoading?CircularProgressIndicator(): InkWell(
-              onTap: () {
-                Login();
-
-
-
-              },
-              child: Container(
-
-                height: 40,
-                width: 200,
-                decoration: BoxDecoration(
-                    color: Colors.deepOrangeAccent.shade200,
-                    borderRadius: BorderRadius.circular(100)
+              ),
+              Padding(
+                padding:
+                    EdgeInsets.only(left: 30, right: 30, top: 20, bottom: 20),
+                child: Container(
+                  height: 50,
+                  width: 350,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Color(0xff47001c ),width: 2),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 15),
+                    child: TextFormField(
+                      obscureText: true,
+                      controller: passwordController,
+                      decoration: InputDecoration(
+                        hintText: 'Enter your password',
+                        hintStyle: TextStyle(color: Color(0xff47001c )),
+                        border: InputBorder.none,
+                      ),
+                    ),
+                  ),
                 ),
-                child: Center(child: Text('Login',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
-                ),),
-            ),
-              SizedBox(height: 5,),
+              ),
+              isLoading
+                  ? CircularProgressIndicator()
+                  : InkWell(
+                      onTap: () {
+                        Login();
+                      },
+                      child: Container(
+                        height: 40,
+                        width: 200,
+                        decoration: BoxDecoration(
+                            color: Color(0xff47001c ),
+                            borderRadius: BorderRadius.circular(100)),
+                        child: Center(
+                          child: Text(
+                            'Login',
+                            style: TextStyle(
+                                color: Colors.white, fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ),
+                    ),
+              SizedBox(
+                height: 5,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Don\'t have an account ?',style: TextStyle(fontSize: 15),),
-                  SizedBox(width: 3,),
-
+                  Text(
+                    'Don\'t have an account ?',
+                    style: TextStyle(fontSize: 15,color: Color(0xff47001c )),
+                  ),
+                  SizedBox(
+                    width: 3,
+                  ),
                   GestureDetector(
-                    onTap: (){
-                      Get.to(()=>SigninScreen());
+                    onTap: () {
+                      Get.to(() => SigninScreen());
                     },
-                    child: Text('Signup',style: TextStyle(color:
-                    Colors.green.shade400),),
+                    child: Text(
+                      'Signup',
+                      style: TextStyle(color: Colors.white),
+                    ),
                   )
                 ],
               ),
+            ],
+          ),
+                ),
+              ),
+          ]
 
-            ],),
-        ),
-      )
-
+        )
     );
   }
 }

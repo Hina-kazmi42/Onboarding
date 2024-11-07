@@ -20,10 +20,10 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       floatingActionButton: FloatingActionButton(onPressed: (){
         Get.to(()=>InsertData());
-      },backgroundColor: Colors.deepOrangeAccent.shade200,
+      },backgroundColor: Color(0xff47001c ),
         child: Icon(Icons.add,color: Colors.white,),),
       appBar: AppBar(
-        backgroundColor: Colors.green.shade400,
+        backgroundColor: Color(0xff47001c ),
         title: Text('Home Screen',style: GoogleFonts.habibi(color: Colors.white,fontSize: 30),),
         centerTitle: true,
         actions: [
@@ -35,15 +35,19 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       body: Container(
+
         decoration: BoxDecoration(
-          gradient: LinearGradient(colors:
-          [
+            gradient: LinearGradient(colors:
+            [
 
-            Colors.deepOrangeAccent.shade200.withOpacity(0.3),
-            Colors.green.shade400.withOpacity(0.5),
-          ]
+              Color(0xff47001c ).withOpacity(.8),
+              Color(0xff971132 ).withOpacity(.9),
+            ],
+                begin: Alignment.topRight,
+                end: Alignment.bottomRight
 
-          )
+
+            )
         ),
         child: StreamBuilder(
             stream: FirebaseFirestore.instance.collection('Todo').snapshots(),
@@ -55,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   itemBuilder: (context,Index){
                     String docid=data.docs[Index]['id'];
                   return Card(
-                  color: Colors.white54.withOpacity(0.4),
+                    color: Colors.white.withOpacity(.2),
 
 
                     child: ListTile(
@@ -70,8 +74,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         Get.defaultDialog(
                           backgroundColor: Colors.white,
                           title: 'Confirmation',
-                              titleStyle: TextStyle(color: Colors.green),
-                              content: Text('You want to delete it ?',style: TextStyle(color: Colors.green),),
+                              titleStyle: TextStyle(color:  Color(0xff47001c )),
+                              content: Text('You want to delete it ?',style: TextStyle(color:  Color(0xff47001c )),),
                             actions:
                             [
                               TextButton(

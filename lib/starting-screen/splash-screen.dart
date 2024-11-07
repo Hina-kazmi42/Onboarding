@@ -67,8 +67,8 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
                     decoration: BoxDecoration(
                         gradient: LinearGradient(colors:  [
 
-                          Color(0xff734b6d),
-                          Color(0xff42275a ),
+                          Color(0xff47001c ),
+                          Color(0xff971132 ),
                         ],
 
                           begin: _topAlignment.value,
@@ -100,9 +100,11 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
                , nextScreen:  SigninScreen(),
                splashIconSize: 3000,
               duration:10000,
-               backgroundColor: Colors.green.withOpacity(0.3),
+               backgroundColor: Color(0xffAF1740).withOpacity(.8)
 
-             )
+
+
+               )
              )),
             Expanded(child: AnimatedBuilder(
                 animation: _controller,
@@ -111,8 +113,8 @@ class _SplashScreenState extends State<SplashScreen> with SingleTickerProviderSt
 
                     decoration: BoxDecoration(
                         gradient: LinearGradient(colors:  [
-                          Colors.green.withOpacity(0.8),
-                          Colors.red.shade900.withOpacity(0.8),
+                          Color(0xff47001c ),
+                          Color(0xff971132 ),
                         ],
                           begin: _bottomAlignment.value,
                           end: _topAlignment.value,
