@@ -24,7 +24,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Icon(Icons.add,color: Colors.white,),),
       appBar: AppBar(
         backgroundColor: Colors.green.shade400,
-        title: Text('Home Screen',style: GoogleFonts.habibi(color: Colors.deepOrangeAccent.shade200,fontSize: 30),),
+        title: Text('Home Screen',style: GoogleFonts.habibi(color: Colors.white,fontSize: 30),),
         centerTitle: true,
         actions: [
           IconButton(onPressed: ()async{
@@ -34,66 +34,81 @@ class _HomeScreenState extends State<HomeScreen> {
           }, icon: Icon(Icons.login_outlined,color: Colors.white,))
         ],
       ),
-      body: StreamBuilder(
-          stream: FirebaseFirestore.instance.collection('Todo').snapshots(),
-          builder:(context, AsyncSnapshot<QuerySnapshot> snapshot)
-          {
-            final data= snapshot.requireData;
-            return ListView.builder(
-              itemCount: data.size,
-                itemBuilder: (context,Index){
-                  String docid=data.docs[Index]['id'];
-                return Card(
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(colors:
+          [
 
-                  color: Colors.blue,
-                  child: ListTile(
+            Colors.deepOrangeAccent.shade200.withOpacity(0.3),
+            Colors.green.shade400.withOpacity(0.5),
+          ]
 
-                    onLongPress: (){
-                      Get.to(()=>UpdateData(
-                          docid: docid));
+          )
+        ),
+        child: StreamBuilder(
+            stream: FirebaseFirestore.instance.collection('Todo').snapshots(),
+            builder:(context, AsyncSnapshot<QuerySnapshot> snapshot)
+            {
+              final data= snapshot.requireData;
+              return ListView.builder(
+                itemCount: data.size,
+                  itemBuilder: (context,Index){
+                    String docid=data.docs[Index]['id'];
+                  return Card(
+                  color: Colors.white54.withOpacity(0.4),
 
 
-                    },
-                    onTap: (){
-                      Get.defaultDialog(
-                        title: 'Confirmation',
-                            content: Text('You want to delete it ?'),
-                          actions:
-                          [
-                            TextButton(
+                    child: ListTile(
 
-                                onPressed: ()async{
-                                  await FirebaseFirestore.instance.
-                                  collection('Todo')
-                                      .doc(docid)
-                                      .delete();
-                                  Get.back();
-                                },
-                                child: Text('Yes') ),
-                            SizedBox(width: 5,),
-                            TextButton(
-                                onPressed: (){
-                                  Get.back();
+                      onLongPress: (){
+                        Get.to(()=>UpdateData(
+                            docid: docid));
 
-                                },
-                                child: Text('No'))
-                          ]
 
-                      );
-                    },
-                    leading: CircleAvatar(
-                      child: Text(docid,)
+                      },
+                      onTap: (){
+                        Get.defaultDialog(
+                          backgroundColor: Colors.white,
+                          title: 'Confirmation',
+                              titleStyle: TextStyle(color: Colors.green),
+                              content: Text('You want to delete it ?',style: TextStyle(color: Colors.green),),
+                            actions:
+                            [
+                              TextButton(
+
+                                  onPressed: ()async{
+                                    await FirebaseFirestore.instance.
+                                    collection('Todo')
+                                        .doc(docid)
+                                        .delete();
+                                    Get.back();
+                                  },
+                                  child: Text('Yes') ),
+                              SizedBox(width: 5,),
+                              TextButton(
+                                  onPressed: (){
+                                    Get.back();
+
+                                  },
+                                  child: Text('No'))
+                            ]
+
+                        );
+                      },
+                      leading: CircleAvatar(
+                        child: Text(docid,)
+                      ),
+                      title: Text(data.docs[Index]['title']),
+                      subtitle: Text(data.docs[Index]['description']),
                     ),
-                    title: Text(data.docs[Index]['title']),
-                    subtitle: Text(data.docs[Index]['description']),
-                  ),
 
-                );
+                  );
 
 
-                });
-          }
+                  });
+            }
 
+        ),
       )
 
 

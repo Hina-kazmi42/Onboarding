@@ -70,97 +70,109 @@ class _SigninScreenState extends State<SigninScreen> {
       ),
 
 
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-          SizedBox(height: 40,),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Container(
-                height: 40,
-                width: 300,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: Colors.deepOrangeAccent.shade400)
-                ),
-                child: TextFormField(
-                  controller: emailController,
-                  decoration: InputDecoration(
-                    hintText: 'Enter Your Email',
-                    hintStyle: TextStyle(color: Colors.green.shade400),
-                    prefixIcon: Icon(Icons.mail_lock,color: Colors.green.shade400,),
-                    border: InputBorder.none
+      body: Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(colors:
+            [
 
+              Colors.deepOrangeAccent.shade200.withOpacity(0.3),
+              Colors.green.shade400.withOpacity(0.5),
+            ]
+
+            )
+        ),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+            SizedBox(height: 40,),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Container(
+                  height: 40,
+                  width: 300,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: Border.all(color: Colors.deepOrangeAccent.shade400)
                   ),
-                ),
-              ),
-            ),
-            SizedBox(height: 20,),
-
-            Padding(
-              padding:  EdgeInsets.symmetric(horizontal: 20),
-              child: Container(
-                height: 40,
-                width: 300,
-                decoration:BoxDecoration(
-                  border: Border.all(color: Colors.deepOrangeAccent.shade400),
-                  borderRadius: BorderRadius.circular(10)
-                ),
-                child: TextFormField(
-
-                  controller: passwordController,
-                  obscureText: true,
-                  decoration: InputDecoration(
-
-                    hintText: 'Enter Your Password',
-                    hintStyle: TextStyle(color: Colors.green.shade400),
-                    prefixIcon: Icon(Icons.password_outlined,color: Colors.green.shade400,),
+                  child: TextFormField(
+                    controller: emailController,
+                    decoration: InputDecoration(
+                      hintText: 'Enter Your Email',
+                      hintStyle: TextStyle(color: Colors.green.shade400),
+                      prefixIcon: Icon(Icons.mail_lock,color: Colors.green.shade400,),
                       border: InputBorder.none
 
+                    ),
                   ),
                 ),
               ),
+              SizedBox(height: 20,),
+
+              Padding(
+                padding:  EdgeInsets.symmetric(horizontal: 20),
+                child: Container(
+                  height: 40,
+                  width: 300,
+                  decoration:BoxDecoration(
+                    border: Border.all(color: Colors.deepOrangeAccent.shade400),
+                    borderRadius: BorderRadius.circular(10)
+                  ),
+                  child: TextFormField(
+
+                    controller: passwordController,
+                    obscureText: true,
+                    decoration: InputDecoration(
+
+                      hintText: 'Enter Your Password',
+                      hintStyle: TextStyle(color: Colors.green.shade400),
+                      prefixIcon: Icon(Icons.password_outlined,color: Colors.green.shade400,),
+                        border: InputBorder.none
+
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 20,),
+              isLoading?CircularProgressIndicator(): InkWell(
+                onTap: (){
+                  registration();
+
+                },
+
+                child: Container(
+
+                 height: 40,
+                 width: 200,
+                 decoration: BoxDecoration(
+                     color: Colors.deepOrangeAccent.shade200,
+                     borderRadius: BorderRadius.circular(100)
+                 ),
+                 child: Center(child: Text('Register',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+                 ),
+                        ),
+              ),
+              SizedBox(height: 5,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Already have an account ?',style: TextStyle(fontSize: 15),),
+                  SizedBox(width: 3,),
+
+              GestureDetector(
+                onTap: (){
+                  Get.to(()=>LoginScreen());
+                },
+                child: Text('Login',style: TextStyle(color:
+                Colors.green.shade400),),
+              )
+                ],
+              ),
+
+
+          ],
             ),
-            SizedBox(height: 20,),
-            isLoading?CircularProgressIndicator(): InkWell(
-              onTap: (){
-                registration();
-
-              },
-
-              child: Container(
-
-               height: 40,
-               width: 200,
-               decoration: BoxDecoration(
-                   color: Colors.deepOrangeAccent.shade200,
-                   borderRadius: BorderRadius.circular(100)
-               ),
-               child: Center(child: Text('Register',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
-               ),
-                      ),
-            ),
-            SizedBox(height: 5,),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('Already have an account ?',style: TextStyle(fontSize: 15),),
-                SizedBox(width: 3,),
-
-            GestureDetector(
-              onTap: (){
-                Get.to(()=>LoginScreen());
-              },
-              child: Text('Login',style: TextStyle(color:
-              Colors.green.shade400),),
-            )
-              ],
-            ),
-
-
-        ],
-    ),
+        ),
       )
       ,
     );
