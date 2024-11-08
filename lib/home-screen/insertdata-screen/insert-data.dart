@@ -49,8 +49,8 @@ class _InsertDataState extends State<InsertData> {
         body: Container(
           decoration: BoxDecoration(
               gradient: LinearGradient(colors: [
-            Color(0xff47001c).withOpacity(.8),
-            Color(0xff971132).withOpacity(.9),
+            Color(0xff47001c).withOpacity(.5),
+            Color(0xff971132).withOpacity(.5),
           ], begin: Alignment.topRight, end: Alignment.bottomRight)),
           child: Center(
             child: Column(

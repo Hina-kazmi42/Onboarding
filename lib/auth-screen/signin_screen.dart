@@ -77,7 +77,7 @@ class _SigninScreenState extends State<SigninScreen> {
 
           Padding(
             padding: const EdgeInsets.only(left: 150,top: 100),
-            child: Image(image: AssetImage('lib/assets/website.png'),height: 150,width: 150,),
+            child: Image(image: AssetImage('lib/assets/website.png'),height: 140,width: 150,),
           ),
           Container(
         
@@ -85,8 +85,8 @@ class _SigninScreenState extends State<SigninScreen> {
               gradient: LinearGradient(colors:
               [
         
-                Color(0xff47001c ).withOpacity(.8),
-                Color(0xff971132 ).withOpacity(.8),
+                Color(0xff47001c ).withOpacity(.5),
+                Color(0xff971132 ).withOpacity(.5),
               ],
                 begin: Alignment.topRight,
                 end: Alignment.bottomRight

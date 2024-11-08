@@ -40,8 +40,8 @@ class _HomeScreenState extends State<HomeScreen> {
             gradient: LinearGradient(colors:
             [
 
-              Color(0xff47001c ).withOpacity(.8),
-              Color(0xff971132 ).withOpacity(.9),
+              Color(0xff47001c ).withOpacity(.5),
+              Color(0xff971132 ).withOpacity(.5),
             ],
                 begin: Alignment.topRight,
                 end: Alignment.bottomRight
@@ -53,13 +53,14 @@ class _HomeScreenState extends State<HomeScreen> {
             stream: FirebaseFirestore.instance.collection('Todo').snapshots(),
             builder:(context, AsyncSnapshot<QuerySnapshot> snapshot)
             {
+
               final data= snapshot.requireData;
               return ListView.builder(
                 itemCount: data.size,
                   itemBuilder: (context,Index){
                     String docid=data.docs[Index]['id'];
                   return Card(
-                    color: Colors.white.withOpacity(.2),
+                    color: Colors.white.withOpacity(.5),
 
 
                     child: ListTile(
