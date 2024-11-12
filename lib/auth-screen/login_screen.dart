@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:onboardding_screen/auth-screen/signin_screen.dart';
@@ -28,9 +29,10 @@ class _LoginScreenState extends State<LoginScreen> {
       setState(() {});
 
       Get.snackbar('Successfully', 'Your account login',
+          backgroundColor: Colors.white.withOpacity(.8),
 
           snackPosition: SnackPosition.TOP,
-          duration: Duration(seconds: 1),
+          duration: Duration(seconds: 2),
           icon: Icon(
             Icons.thumb_up,
             color: Colors.green.shade600,
@@ -138,7 +140,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
               isLoading
-                  ? CircularProgressIndicator()
+                  ? SpinKitDualRing(color: Colors.black)
                   : InkWell(
                       onTap: () {
                         Login();

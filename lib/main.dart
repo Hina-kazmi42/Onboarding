@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Onboarding Screen',
+      title: 'ToDo App',
       theme: ThemeData(
         // This is the theme of your application.
         //

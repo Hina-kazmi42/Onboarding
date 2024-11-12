@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -35,6 +36,7 @@ class _SigninScreenState extends State<SigninScreen> {
       setState(() {
 
       });
+
       Get.snackbar('Congratulations', 'Your account successfully created',
           backgroundColor:Colors.white.withOpacity(.5) ,
           snackPosition: SnackPosition.TOP,
@@ -48,14 +50,35 @@ class _SigninScreenState extends State<SigninScreen> {
       setState(() {
       });
 
-      Get.snackbar('Error:', '$error',
-        snackPosition: SnackPosition.BOTTOM,
-        backgroundColor: Colors.white.withOpacity(.5),
-        duration: Duration(seconds: 2),
-        dismissDirection: DismissDirection.horizontal,
-        icon: Icon(Icons.error_outline_outlined, color: Colors.red,),
+
+      Get.defaultDialog(
+          title: 'Alert',
+          titleStyle: TextStyle(color: Color(0xff47001c )),
+          content: Text('all textfields must be filled ',style: TextStyle(color: Color(0xff47001c )),),
+          actions: [
+            TextButton(onPressed: (){
+
+              Get.back();
+            },
+
+              child:Text('ok'),)
+
+          ]
+
+
+
 
       );
+
+
+      // Get.snackbar('Error:', '$error',
+      //   snackPosition: SnackPosition.BOTTOM,
+      //   backgroundColor: Colors.white.withOpacity(.5),
+      //   duration: Duration(seconds: 2),
+      //   dismissDirection: DismissDirection.horizontal,
+      //   icon: Icon(Icons.error_outline_outlined, color: Colors.red,),
+
+
     });
   }
 
@@ -86,11 +109,11 @@ class _SigninScreenState extends State<SigninScreen> {
               [
         
                 Color(0xff47001c ).withOpacity(.5),
+
                 Color(0xff971132 ).withOpacity(.5),
               ],
-                begin: Alignment.topRight,
+                begin: Alignment.topLeft,
                 end: Alignment.bottomRight
-
         
               )
           ),
@@ -199,10 +222,9 @@ class _SigninScreenState extends State<SigninScreen> {
                   ),
                 ),
                 SizedBox(height: 20,),
-                isLoading?CircularProgressIndicator(): InkWell(
+                isLoading?SpinKitDualRing(color: Colors.black,): InkWell(
                   onTap: (){
-                    registration();
-        
+                  registration();
                   },
         
                   child: Container(

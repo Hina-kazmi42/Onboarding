@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -44,7 +45,7 @@ class _InsertDataState extends State<InsertData> {
             style: GoogleFonts.ibarraRealNova(
                 color: Colors.white, fontSize: 20),
           ),
-          centerTitle: true,
+
         ),
         body: Container(
           decoration: BoxDecoration(
@@ -113,7 +114,7 @@ class _InsertDataState extends State<InsertData> {
                   height: 20,
                 ),
                 isLoading
-                    ? CircularProgressIndicator()
+                    ? SpinKitDualRing(color: Colors.black)
                     : InkWell(
                         onTap: () {
                           insertData();

@@ -22,25 +22,26 @@ class _SplashScreenState extends State<SplashScreen>
     // TODO: implement initState
     super.initState();
     _controller =
+
         AnimationController(vsync: this, duration: Duration(seconds: 4));
     // TODO: this is for topAlignment Animation
     _topAlignment = TweenSequence<Alignment>(
       [
         TweenSequenceItem(
             tween: Tween<Alignment>(
-                begin: Alignment.topLeft, end: Alignment.topRight),
+                begin: Alignment.topLeft, end: Alignment.center),
             weight: 1),
         TweenSequenceItem(
             tween: Tween<Alignment>(
-                begin: Alignment.topRight, end: Alignment.bottomRight),
+                begin: Alignment.center, end: Alignment.bottomRight),
             weight: 1),
         TweenSequenceItem(
             tween: Tween<Alignment>(
-                begin: Alignment.bottomRight, end: Alignment.bottomLeft),
+                begin: Alignment.bottomRight, end: Alignment.center),
             weight: 1),
         TweenSequenceItem(
             tween: Tween<Alignment>(
-                begin: Alignment.bottomLeft, end: Alignment.topLeft),
+                begin: Alignment.center, end: Alignment.topLeft),
             weight: 1),
       ],
     ).animate(_controller);
@@ -50,19 +51,19 @@ class _SplashScreenState extends State<SplashScreen>
       [
         TweenSequenceItem(
             tween: Tween<Alignment>(
-                begin: Alignment.bottomRight, end: Alignment.bottomLeft),
+                begin: Alignment.bottomRight, end: Alignment.center),
             weight: 1),
         TweenSequenceItem(
             tween: Tween<Alignment>(
-                begin: Alignment.bottomLeft, end: Alignment.topLeft),
+                begin: Alignment.center, end: Alignment.topLeft),
             weight: 1),
         TweenSequenceItem(
             tween: Tween<Alignment>(
-                begin: Alignment.topLeft, end: Alignment.topRight),
+                begin: Alignment.topLeft, end: Alignment.center),
             weight: 1),
         TweenSequenceItem(
             tween: Tween<Alignment>(
-                begin: Alignment.topRight, end: Alignment.bottomRight),
+                begin: Alignment.center, end: Alignment.bottomRight),
             weight: 1),
       ],
     ).animate(_controller);
@@ -104,13 +105,14 @@ class _SplashScreenState extends State<SplashScreen>
                     }),
               ),
               Expanded(
+
                   child: Container(
                       child: AnimatedSplashScreen(
                           splash: Center(
                               child: LottieBuilder.asset(
                                   'lib/assets/animation/Animation2.json')),
                           nextScreen: SigninScreen(),
-                          splashIconSize: 3000,
+                        splashIconSize: 2000,
                           duration: 2500,
                           backgroundColor: Color(0xffAF1740)))),
               Expanded(

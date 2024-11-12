@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -15,6 +16,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  bool isLoading=false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         backgroundColor: Color(0xff47001c ),
         title: Text('Home Screen',style: GoogleFonts.habibi(color: Colors.white,fontSize: 30),),
-        centerTitle: true,
+
         actions: [
           IconButton(onPressed: ()async{
             await FirebaseAuth.instance.signOut();
@@ -45,14 +47,17 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
                 begin: Alignment.topRight,
                 end: Alignment.bottomRight
-
-
             )
         ),
         child: StreamBuilder(
+
             stream: FirebaseFirestore.instance.collection('Todo').snapshots(),
             builder:(context, AsyncSnapshot<QuerySnapshot> snapshot)
+
             {
+              if(snapshot.connectionState==ConnectionState.waiting){
+                return Center(child: SpinKitDualRing(color: Colors.black),);
+              }
 
               final data= snapshot.requireData;
               return ListView.builder(
@@ -60,8 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   itemBuilder: (context,Index){
                     String docid=data.docs[Index]['id'];
                   return Card(
-                    color: Colors.white.withOpacity(.5),
-
+                    color: Color(0xff740938 ),
 
                     child: ListTile(
 
@@ -101,10 +105,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         );
                       },
                       leading: CircleAvatar(
-                        child: Text(docid,)
-                      ),
-                      title: Text(data.docs[Index]['title']),
-                      subtitle: Text(data.docs[Index]['description']),
+                        backgroundColor: Color(0xffAF1740 ),
+                        child: Text(docid,style: TextStyle(color: Colors.white),),
+                        ),
+
+                      title: Text(data.docs[Index]['title'],style: TextStyle(color: Colors.white),),
+                      subtitle: Text(data.docs[Index]['description'],style: TextStyle(color: Colors.white)),
                     ),
 
                   );

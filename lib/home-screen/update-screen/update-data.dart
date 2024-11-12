@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -51,7 +52,7 @@ class _UpdateDataState extends State<UpdateData> {
         appBar: AppBar(
           backgroundColor:  Color(0xff47001c ),
           title: Text('Update Data',style: GoogleFonts.ibarraRealNova(color: Colors.white,fontSize: 20),),
-          centerTitle: true,
+
         ),
         body: Container(      decoration: BoxDecoration(
             gradient: LinearGradient(colors: [
@@ -108,7 +109,7 @@ class _UpdateDataState extends State<UpdateData> {
                 ),
               ),
               SizedBox(height: 20,),
-              isLoading?CircularProgressIndicator():InkWell(
+              isLoading?SpinKitDualRing(color: Colors.black):InkWell(
                 onTap: () {
 
                   Get.defaultDialog(
